@@ -1,47 +1,142 @@
-<h2 class="text-center">AngularJS Boilerplate</h2>
 
-<!-- slider directive -->
-<div myslider>
-    <ul class="slider">
-        <li class="image-slider">
-            <img src="https://unsplash.imgix.net/photo-1426200830301-372615e4ac54?fit=crop&fm=jpg&h=725&q=75&w=1050" alt="Image">
-        </li>
-        <li class="image-slider">
-            <img src="https://unsplash.imgix.net/photo-1421977870504-378093748ae6?fit=crop&fm=jpg&h=700&q=75&w=1050" alt="Image">
-        </li>
-        <li class="image-slider">
-            <img src="https://ununsplash.imgix.net/photo-1421757295538-9c80958e75b0?fit=crop&fm=jpg&h=700&q=75&w=1050" alt="Image">
-        </li>
-        <li class="image-slider">
-            <img src="https://unsplash.imgix.net/photo-1420745981456-b95fe23f5753?fit=crop&fm=jpg&h=700&q=75&w=1050" alt="Image">
-        </li>
-        <li class="image-slider">
-            <img src="https://download.unsplash.com/photo-1415871989540-61fe9268d3c8" alt="Image">
-        </li>
-    </ul>
+<div class="progress">
+      <div class="indeterminate"></div>
+  </div>
+
+
+<div ng-init="myVar = 'https://www.pubnub.com/wp-content/uploads/2015/01/paper-chat-cover.png'">
+<img width="100%" ng-src="{{myVar}}">
 </div>
+<div class="card-panel">
+     <span class="black-text text-darken-2">This is a card panel with dark blue text</span>
+   </div>
 
-<h3>Features</h3>
-<div class="container cf">
-    <div>
-        <ul>
-            <li>* SASS support including sourceMaps</li>
-            <li>* Minimal CSS styling of the view</li>
-            <li>* Gulp watch, build and local server tasks</li>
-            <li>* Responsive navigation</li>
-            <li>* Owl slider directive</li>
-            <li>* Responsive navigation</li>
-            <li>* localStorage service for set, get, remove data</li>
-            <li>* queryService $http wrapper to handle calls</li>
-            <li>* clear folder structure</li>
-            <li>* less than 10 request in build version</li>
-            <li>* minified CSS and JS build files</li>
-            <li>* google analytics snippet</li>
-        </ul>
-    </div>
-</div>
+   <blockquote>
+     This is an example quotation that uses the blockquote tag.
+   </blockquote>
 
-<div class="text-center">
-    <small>Images courtesy of <a target="_blank" href="http://unsplash.com">unsplash.com</a></small>
-</div>
+   <a class="waves-effect waves-light btn">button</a>
+   <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
+   <a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
 
+
+  <p class="flow-text">
+    I am Flow Text get the best you can have for diagrams
+  </p>
+  <div class="collection">
+    <a href="#!" class="collection-item">DCC104<span class="new badge">4</span></a>
+    <a href="#!" class="collection-item">Alan</a>
+    <a href="#!" class="collection-item">Alan<span class="badge">14</span></a>
+  </div>
+
+  <ul class="collection">
+     <li class="collection-item avatar">
+       <span class="title">Title</span>
+       <p>First Line <br>
+          Second Line
+       </p>
+       <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+     </li>
+     <li class="collection-item avatar">
+       <i class="material-icons circle">folder</i>
+       <span class="title">Title</span>
+       <p>First Line <br>
+          Second Line
+       </p>
+       <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+     </li>
+     <li class="collection-item avatar">
+       <i class="material-icons circle green">insert_chart</i>
+       <span class="title">Title</span>
+       <p>First Line <br>
+          Second Line
+       </p>
+       <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+     </li>
+     <li class="collection-item avatar">
+       <i class="material-icons circle red">play_arrow</i>
+       <span class="title">Title</span>
+       <p>First Line <br>
+          Second Line
+       </p>
+       <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+     </li>
+   </ul>
+
+
+   <div width="100%" id="paper" style="border-style: solid;
+    border-width: 1px;" > </div>
+
+
+
+<script>
+
+
+  var graph = new joint.dia.Graph();
+
+  var paper = new joint.dia.Paper({
+      el: $('#paper'),
+      width: 800,
+      height: 600,
+      gridSize: 1,
+      model: graph,
+      perpendicularLinks: true,
+      restrictTranslate: true
+  });
+
+  var member = function(x, y, rank, name, image, background, textColor) {
+
+      textColor = textColor || "#000";
+
+      var cell = new joint.shapes.org.Member({
+          position: { x: x, y: y },
+          attrs: {
+              '.card': { fill: background, stroke: 'none'},
+                image: { 'xlink:href': 'images/'+ image, opacity: 0.7 },
+              '.rank': { text: rank, fill: textColor, 'word-spacing': '-5px', 'letter-spacing': 0},
+              '.name': { text: name, fill: textColor, 'font-size': 13, 'font-family': 'Arial', 'letter-spacing': 0 }
+          }
+      });
+      graph.addCell(cell);
+      return cell;
+  };
+
+  function link(source, target, breakpoints) {
+
+      var cell = new joint.shapes.org.Arrow({
+          source: { id: source.id },
+          target: { id: target.id },
+          vertices: breakpoints,
+          attrs: {
+              '.connection': {
+                  'fill': 'none',
+                  'stroke-linejoin': 'round',
+                  'stroke-width': '2',
+                  'stroke': '#4b4a67'
+              }
+          }
+
+      });
+      graph.addCell(cell);
+      return cell;
+  }
+
+  var bart = member(300, 70, 'CEO', 'Bart Simpson', 'male.png', '#30d0c6');
+  var homer = member(90, 200, 'VP Marketing', 'Homer Simpson', 'male.png', '#7c68fd', '#f1f1f1');
+  var marge = member(300, 200, 'VP Sales', 'Marge Simpson', 'female.png', '#7c68fd', '#f1f1f1');
+  var lisa = member(500, 200, 'VP Production' , 'Lisa Simpson', 'female.png', '#7c68fd', '#f1f1f1');
+  var maggie = member(400, 350, 'Manager', 'Maggie Simpson', 'female.png', '#feb563');
+  var lenny = member(190, 350, 'Manager', 'Lenny Leonard', 'male.png', '#feb563');
+  var carl = member(190, 500, 'Manager', 'Carl Carlson', 'male.png', '#feb563');
+
+
+
+  link(bart, marge, [{x: 385, y: 180}]);
+  link(bart, homer, [{x: 385, y: 180}, {x: 175, y: 180}]);
+  link(bart, lisa, [{x: 385, y: 180}, {x: 585, y: 180}]);
+  link(homer, lenny, [{x:175 , y: 380}]);
+  link(homer, carl, [{x:175 , y: 530}]);
+  link(marge, maggie, [{x:385 , y: 380}]);
+
+
+</script>
